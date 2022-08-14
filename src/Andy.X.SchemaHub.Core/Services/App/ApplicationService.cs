@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Andy.X.SchemaHub.IO.Locations;
+using Microsoft.Extensions.Logging;
 
 namespace Andy.X.SchemaHub.Core.Services.App
 {
@@ -62,6 +63,18 @@ namespace Andy.X.SchemaHub.Core.Services.App
                         Console.WriteLine($"                   Port exposed {url.Split(':').Last()}");
                 }
             }
+        }
+
+        public static void TryCreateDataDirectory()
+        {
+            if (Directory.Exists(AppLocations.GetDataDirectory()) != true)
+                Directory.CreateDirectory(AppLocations.GetDataDirectory());
+
+            if (Directory.Exists(AppLocations.GetStoreDirectory()) != true)
+                Directory.CreateDirectory(AppLocations.GetStoreDirectory());
+
+            if (Directory.Exists(AppLocations.GetLogsDirectory()) != true)
+                Directory.CreateDirectory(AppLocations.GetLogsDirectory());
         }
     }
 }

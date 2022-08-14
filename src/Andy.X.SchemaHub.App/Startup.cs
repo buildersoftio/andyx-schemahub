@@ -37,6 +37,12 @@ namespace Andy.X.SchemaHub.App
 
             services.AddSerilogLoggingConfiguration(Configuration);
             services.AddSingleton<ApplicationService>();
+
+            services.AddRepositories();
+            services.AddServices();
+            services.AddFactories();
+
+            ApplicationService.TryCreateDataDirectory();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
