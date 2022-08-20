@@ -6,8 +6,8 @@ namespace Andy.X.SchemaHub.Core.Contexts
 {
     public class SchemaDbContext : DbContext
     {
-        public readonly string _schemmaDbLocation; 
-        
+        public readonly string _schemmaDbLocation;
+
         public SchemaDbContext()
         {
             _schemmaDbLocation = AppLocations.GetschemasStoreFile();
@@ -19,5 +19,8 @@ namespace Andy.X.SchemaHub.Core.Contexts
         }
 
         public DbSet<Schema> Schemas { get; set; }
+        public DbSet<SchemaDefinition> SchemaDefinitions { get; set; }
+        public DbSet<DraftSchemaDefinition> DraftSchemaDefinitions { get; set; }
+        public DbSet<SchemaSettings> SchemaSettings { get; set; }
     }
 }

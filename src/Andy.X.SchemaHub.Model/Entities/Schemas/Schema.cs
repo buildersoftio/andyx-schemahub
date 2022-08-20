@@ -9,18 +9,18 @@ namespace Andy.X.SchemaHub.Model.Entities.Schemas
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
 
-
         public long TenantId { get; set; }
-        public long DomainId { get; set; }
+
+        // Will not be implemented in the first version
+        public long? DomainId { get; set; }
 
 
         [Required]
         [StringLength(50)]
-        public string Name { get; set; }  // it should me unique for domain
-        public string Version { get; set; }
-        public string SchemaPayload { get; set; }
+        public string Name { get; set; }  // it should me unique for version
 
-        public List<string> SchemaFileLocations { get; set; }
+        // Current Version represents the production version of the schema, which clients are connected
+        public string CurrentVersion { get; set; }
 
         public SchemaStatus Status { get; set; }
     }

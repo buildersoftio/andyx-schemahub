@@ -4,5 +4,6 @@ namespace Andy.X.SchemaHub.Core.Services.Schemas
 {
     public class SchemaService: ISchemaService
     {
+
     }
 }

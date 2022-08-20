@@ -1,4 +1,5 @@
 ﻿using Andy.X.SchemaHub.IO.Locations;
+using Andy.X.SchemaHub.Model.Entities.Schemas;
 using Andy.X.SchemaHub.Model.Entities.Tenants;
 using Microsoft.EntityFrameworkCore;
 
