@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Andy.X.SchemaHub.Core.Repositories
 {
-    public class TenantRepository: ITenantRepository
+    public class TenantRepository : ITenantRepository
     {
         private readonly ILogger<TenantRepository> _logger;
         private readonly TenantDbContext tenantDbContext;
@@ -19,29 +19,59 @@ namespace Andy.X.SchemaHub.Core.Repositories
             tenantDbContext.Database.EnsureCreated();
         }
 
-        public void AddTenant(string tenantName)
+        public void AddTenant(Tenant tenant)
         {
-            throw new NotImplementedException();
+            lock (tenantDbContext)
+            {
+                tenantDbContext
+                    .Tenants
+                    .Add(tenant);
+
+                tenantDbContext.SaveChanges();
+            }
         }
 
-        public void ChangeStatus(long id, TenantStatus tenantStatus)
+        public void UpdateTenant(Tenant tenant)
         {
-            throw new NotImplementedException();
+            lock (tenantDbContext)
+            {
+                tenantDbContext.Tenants.Update(tenant);
+                tenantDbContext.SaveChanges();
+            }
         }
 
-        public List<Tenant> GetAll()
+        public List<Tenant> GetTenants()
         {
-            throw new NotImplementedException();
+            return tenantDbContext
+                .Tenants
+                .ToList();
         }
 
         public Tenant GetTenant(long id)
         {
-            throw new NotImplementedException();
+            return tenantDbContext
+                .Tenants
+                .Find(id)!;
         }
 
         public void RemoveTenant(long id)
         {
-            throw new NotImplementedException();
+            var tenant = tenantDbContext.Tenants.Find(id);
+            if (tenant == null)
+            {
+                return;
+            }
+
+            tenantDbContext.Tenants.Remove(tenant);
+            tenantDbContext.SaveChanges();
+        }
+
+        public Tenant GetTenant(string tenantName)
+        {
+            return tenantDbContext
+                .Tenants
+                .Where(x => x.Name == tenantName)
+                .FirstOrDefault()!;
         }
     }
 }

@@ -8,8 +8,8 @@ namespace Andy.X.SchemaHub.App.Extensions.DependencyInjection
     {
         public static void AddRepositories(this IServiceCollection services)
         {
-            services.AddScoped<ITenantRepository, TenantRepository>();
-            services.AddScoped<ISchemaRepository, SchemaRepository>();
+            services.AddSingleton<ITenantRepository, TenantRepository>();
+            services.AddSingleton<ISchemaRepository, SchemaRepository>();
         }
     }
 }

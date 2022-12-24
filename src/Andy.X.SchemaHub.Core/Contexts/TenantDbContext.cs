@@ -27,7 +27,6 @@ namespace Andy.X.SchemaHub.Core.Contexts
 
 
         public DbSet<Tenant> Tenants { get; set; }
-        public DbSet<Tag> Tags { get; set; }
 
     }
 }

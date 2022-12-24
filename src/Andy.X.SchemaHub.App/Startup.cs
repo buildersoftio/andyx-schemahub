@@ -1,18 +1,13 @@
 using Andy.X.SchemaHub.App.Extensions.DependencyInjection;
+using Andy.X.SchemaHub.App.Middleware;
 using Andy.X.SchemaHub.Core.Services.App;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Andy.X.SchemaHub.App
 {
@@ -38,9 +33,9 @@ namespace Andy.X.SchemaHub.App
             services.AddSerilogLoggingConfiguration(Configuration);
             services.AddSingleton<ApplicationService>();
 
+            services.AddFactories();
             services.AddRepositories();
             services.AddServices();
-            services.AddFactories();
 
             ApplicationService.TryCreateDataDirectory();
         }
@@ -57,6 +52,7 @@ namespace Andy.X.SchemaHub.App
 
             app.UseApplicationService(serviceProvider);
 
+            app.UseMiddleware<LoggingMiddleware>();
 
             app.UseHttpsRedirection();
             app.UseRouting();

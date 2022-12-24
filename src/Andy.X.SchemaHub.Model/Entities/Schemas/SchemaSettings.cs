@@ -6,7 +6,6 @@ namespace Andy.X.SchemaHub.Model.Entities.Schemas
     {
         [Key]
         public long SchemaId { get; set; }
-        public string Name { get; set; }
 
         // in case that version is forced
         // the first production version will be v1.0.0,
@@ -18,5 +17,9 @@ namespace Andy.X.SchemaHub.Model.Entities.Schemas
         public bool IsForwardCompatibility { get; set; }
 
         public int NumberOfVersionsSupportedForCompatibility { get; set; }
+
+        public DateTimeOffset? UpdatedDate { get; set; }
+        public DateTimeOffset CreatedDate { get; set; }
+        public string? CreatedBy { get; set; }
     }
 }

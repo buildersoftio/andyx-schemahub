@@ -11,7 +11,7 @@ namespace Andy.X.SchemaHub.Model.Entities.Schemas
 
         public long TenantId { get; set; }
 
-        // Will not be implemented in the first version
+        // will not be implemented in the first version
         public long? DomainId { get; set; }
 
 
@@ -23,5 +23,10 @@ namespace Andy.X.SchemaHub.Model.Entities.Schemas
         public string CurrentVersion { get; set; }
 
         public SchemaStatus Status { get; set; }
+
+
+        public DateTimeOffset? UpdatedDate { get; set; }
+        public DateTimeOffset CreatedDate { get; set; }
+        public string? CreatedBy { get; set; }
     }
 }

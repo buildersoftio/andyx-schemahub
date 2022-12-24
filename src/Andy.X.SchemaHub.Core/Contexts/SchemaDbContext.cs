@@ -22,5 +22,8 @@ namespace Andy.X.SchemaHub.Core.Contexts
         public DbSet<SchemaDefinition> SchemaDefinitions { get; set; }
         public DbSet<DraftSchemaDefinition> DraftSchemaDefinitions { get; set; }
         public DbSet<SchemaSettings> SchemaSettings { get; set; }
+        public DbSet<TopicSchemaLink> TopicSchemaLinks { get; set; }
+
+        public DbSet<Tag> Tags { get; set; }
     }
 }

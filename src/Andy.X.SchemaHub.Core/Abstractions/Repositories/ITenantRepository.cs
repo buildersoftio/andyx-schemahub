@@ -4,11 +4,12 @@ namespace Andy.X.SchemaHub.Core.Abstractions.Repositories
 {
     public interface ITenantRepository
     {
-        void AddTenant(string tenantName);
+        void AddTenant(Tenant tenant);
         void RemoveTenant(long id);
-        void ChangeStatus(long id, TenantStatus tenantStatus);
+        void UpdateTenant(Tenant tenant);
 
         Tenant GetTenant(long id);
-        List<Tenant> GetAll();
+        Tenant GetTenant(string tenantName);
+        List<Tenant> GetTenants();
     }
 }

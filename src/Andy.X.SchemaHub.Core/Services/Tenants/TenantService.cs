@@ -1,5 +1,6 @@
 ﻿using Andy.X.SchemaHub.Core.Abstractions.Repositories;
 using Andy.X.SchemaHub.Core.Abstractions.Services;
+using Andy.X.SchemaHub.IO.Services;
 using Andy.X.SchemaHub.Model.Entities.Tenants;
 using Microsoft.Extensions.Logging;
 
@@ -18,27 +19,74 @@ namespace Andy.X.SchemaHub.Core.Services.Tenants
 
         public bool ChangeTenantStatus(string tenantName, TenantStatus status)
         {
-            throw new NotImplementedException();
+            var tenant = GetTenant(tenantName);
+            if (tenant == null)
+            {
+                return false;
+            }
+
+            tenant.Status = status;
+            tenant.UpdatedDate = DateTime.UtcNow;
+
+            _tenantRepository.UpdateTenant(tenant);
+
+            return true;
         }
 
         public bool CreateTenant(string tenantName)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var tenant = new Tenant()
+                {
+                    Name = tenantName,
+                    Status = TenantStatus.Active,
+                    CreatedDate = DateTime.UtcNow,
+                    CreatedBy = "system"
+                };
+
+                _tenantRepository.AddTenant(tenant);
+
+                TenantIOService.TryCreateTenantDirectory(tenantName);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Something went wrong! Tenant cannot be added, details: {ex.Message}");
+                return false;
+            }
+
         }
 
         public bool DeleteTenant(string tenantName)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var tenant = GetTenant(tenantName);
+                _tenantRepository.RemoveTenant(tenant.Id);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Something went wrong! Tenant cannot be deleted, details: {ex.Message}");
+                return false;
+            }
         }
 
-        public Tenant GetTenantDetails(string tenant)
+        public Tenant GetTenant(string tenant)
         {
-            throw new NotImplementedException();
+            return _tenantRepository
+                .GetTenant(tenant);
         }
 
-        public List<Tenant> GetTenants()
+        public List<string> GetTenants()
         {
-            throw new NotImplementedException();
+            return _tenantRepository
+                .GetTenants()
+                .Select(t => t.Name)
+                .ToList();
         }
     }
 }

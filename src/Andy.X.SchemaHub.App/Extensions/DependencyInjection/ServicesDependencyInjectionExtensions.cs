@@ -1,5 +1,6 @@
-﻿using Andy.X.SchemaHub.Core.Abstractions.Repositories;
-using Andy.X.SchemaHub.Core.Repositories;
+﻿using Andy.X.SchemaHub.Core.Abstractions.Services;
+using Andy.X.SchemaHub.Core.Services.Schemas;
+using Andy.X.SchemaHub.Core.Services.Tenants;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Andy.X.SchemaHub.App.Extensions.DependencyInjection
@@ -8,8 +9,8 @@ namespace Andy.X.SchemaHub.App.Extensions.DependencyInjection
     {
         public static void AddServices(this IServiceCollection services)
         {
-            services.AddScoped<ITenantRepository, TenantRepository>();
-            services.AddScoped<ISchemaRepository, SchemaRepository>();
+            services.AddSingleton<ITenantService, TenantService>();
+            services.AddSingleton<ISchemaService, SchemaService>();
         }
     }
 }

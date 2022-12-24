@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Andy.X.SchemaHub.App", "src\Andy.X.SchemaHub.App\Andy.X.SchemaHub.App.csproj", "{782916F6-84D7-4791-AD1E-5AD7E2B4A7BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Andy.X.SchemaHub.App", "src\Andy.X.SchemaHub.App\Andy.X.SchemaHub.App.csproj", "{782916F6-84D7-4791-AD1E-5AD7E2B4A7BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Andy.X.SchemaHub.Core", "src\Andy.X.SchemaHub.Core\Andy.X.SchemaHub.Core.csproj", "{29A84EBE-7D7E-4C83-B552-568B9AECBE4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Andy.X.SchemaHub.Core", "src\Andy.X.SchemaHub.Core\Andy.X.SchemaHub.Core.csproj", "{29A84EBE-7D7E-4C83-B552-568B9AECBE4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Andy.X.SchemaHub.Model", "src\Andy.X.SchemaHub.Model\Andy.X.SchemaHub.Model.csproj", "{0E0B4C79-FFFB-46F9-94F9-1C2E61D1B0D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Andy.X.SchemaHub.Model", "src\Andy.X.SchemaHub.Model\Andy.X.SchemaHub.Model.csproj", "{0E0B4C79-FFFB-46F9-94F9-1C2E61D1B0D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Andy.X.SchemaHub.IO", "src\Andy.X.SchemaHub.IO\Andy.X.SchemaHub.IO.csproj", "{C4675622-55BD-47BE-87E2-4C3743457384}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Andy.X.SchemaHub.IO", "src\Andy.X.SchemaHub.IO\Andy.X.SchemaHub.IO.csproj", "{C4675622-55BD-47BE-87E2-4C3743457384}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Andy.X.SchemaHub.Utility", "src\Andy.X.SchemaHub.Utility\Andy.X.SchemaHub.Utility.csproj", "{A206C4CD-64BF-4230-B5DB-C0BA92485A5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Andy.X.SchemaHub.Utility", "src\Andy.X.SchemaHub.Utility\Andy.X.SchemaHub.Utility.csproj", "{A206C4CD-64BF-4230-B5DB-C0BA92485A5E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

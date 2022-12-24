@@ -9,7 +9,7 @@ namespace Andy.X.SchemaHub.Core.Abstractions.Services
 
         bool ChangeTenantStatus(string tenantName, TenantStatus status);
 
-        Tenant GetTenantDetails(string tenant);
-        List<Tenant> GetTenants();
+        Tenant GetTenant(string tenant);
+        List<string> GetTenants();
     }
 }
