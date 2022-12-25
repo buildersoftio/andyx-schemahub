@@ -13,7 +13,9 @@ namespace Andy.X.SchemaHub.App.Extensions.DependencyInjection
 
             Log.Logger = new LoggerConfiguration()
                 .ReadFrom.Configuration(configuration)
-                .WriteTo.File(logFileLocatiom, rollingInterval: RollingInterval.Day)
+                .WriteTo.File(logFileLocatiom,
+                    outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss}  andyx-schemahub   {Level,-12} {0,-3} | {0,-3} {Message}{NewLine}{Exception}",
+                    rollingInterval: RollingInterval.Day)
                 .CreateLogger();
         }
     }

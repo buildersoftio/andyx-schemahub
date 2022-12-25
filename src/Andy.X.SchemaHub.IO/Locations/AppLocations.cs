@@ -35,33 +35,12 @@
 
         public static string GetSchemasDirectory()
         {
-            return Path.Combine(GetStoreDirectory(), "schemas");
+            return Path.Combine(GetStoreDirectory(), "schemas-log");
         }
 
         public static string GetschemasStoreFile()
         {
             return Path.Combine(GetSchemasDirectory(), "schemas_store.andx");
-        }
-
-        // Validations, versioning etc.
-        public static string GetSchemaRootDirectory(Guid schemaId)
-        {
-            return Path.Combine(GetSchemasDirectory(), schemaId.ToString());
-        }
-
-        public static string GetSchemaValidationsDirectory(Guid schemaId)
-        {
-            return Path.Combine(GetSchemaRootDirectory(schemaId), "validations");
-        }
-
-        public static string GetSchemaFilesRootDirectory(Guid schemaId)
-        {
-            return Path.Combine(GetSchemaRootDirectory(schemaId), "files");
-        }
-
-        public static string GetSchemaFilesSchemaFile(Guid schemaId, string schemaFile)
-        {
-            return Path.Combine(GetSchemaFilesRootDirectory(schemaId), schemaFile);
         }
     }
 }

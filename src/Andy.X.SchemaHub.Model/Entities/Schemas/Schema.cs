@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Andy.X.SchemaHub.Model.Entities.Schemas
 {
@@ -9,9 +10,11 @@ namespace Andy.X.SchemaHub.Model.Entities.Schemas
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
 
+        [JsonIgnore]
         public long TenantId { get; set; }
 
         // will not be implemented in the first version
+        [JsonIgnore]
         public long? DomainId { get; set; }
 
 
@@ -20,10 +23,7 @@ namespace Andy.X.SchemaHub.Model.Entities.Schemas
         public string Name { get; set; }  // it should me unique for version
 
         // Current Version represents the production version of the schema, which clients are connected
-        public string CurrentVersion { get; set; }
-
-        public SchemaStatus Status { get; set; }
-
+        public long? CurrentSchemaDefinitionId { get; set; }
 
         public DateTimeOffset? UpdatedDate { get; set; }
         public DateTimeOffset CreatedDate { get; set; }

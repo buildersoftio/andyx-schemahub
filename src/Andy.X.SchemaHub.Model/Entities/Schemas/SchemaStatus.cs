@@ -5,6 +5,7 @@
         Draft,
         InReview,
         Active,
+        InActive,
         Disable,
         Deleted
     }

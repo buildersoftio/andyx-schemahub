@@ -10,6 +10,12 @@
 		<PackageReference Include="Buildersoft.Andy.X.Client" Version="3.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+		<PackageReference Include="NJsonSchema" Version="10.8.0" />
+		<PackageReference Include="NJsonSchema.CodeGeneration" Version="10.8.0" />
+		<PackageReference Include="NJsonSchema.CodeGeneration.CSharp" Version="10.8.0" />
+		<PackageReference Include="NJsonSchema.CodeGeneration.TypeScript" Version="10.8.0" />
+		<PackageReference Include="NJsonSchema.Extensions" Version="0.1.0" />
+		<PackageReference Include="NJsonSchema.Yaml" Version="10.8.0" />
 	</ItemGroup>
 
 	<ItemGroup>

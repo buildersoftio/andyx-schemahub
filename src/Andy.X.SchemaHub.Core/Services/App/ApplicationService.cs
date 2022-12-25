@@ -1,16 +1,18 @@
-﻿using Andy.X.SchemaHub.IO.Locations;
+﻿using Andy.X.SchemaHub.Core.Extensions;
+using Andy.X.SchemaHub.IO.Locations;
+using Andy.X.SchemaHub.Model.Configurations;
 using Microsoft.Extensions.Logging;
+using System.Runtime.InteropServices;
 
 namespace Andy.X.SchemaHub.Core.Services.App
 {
     public class ApplicationService
     {
-        public ApplicationService(ILogger<ApplicationService> logger, IServiceProvider serviceProvider)
+        public ApplicationService(ILogger<ApplicationService> logger, IServiceProvider serviceProvider, NodeConfiguration nodeConfiguration)
         {
             var generalColor = Console.ForegroundColor;
 
-            Console.WriteLine("                   Starting Buildersoft Andy X | SchemaHub");
-            //Console.WriteLine("                   Copyright (C) 2022 Buildersoft LLC");
+            Console.WriteLine($"                   Starting {ApplicationProperties.Name}");
             Console.WriteLine("                   Set your information in motion.");
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.Red;
@@ -18,7 +20,7 @@ namespace Andy.X.SchemaHub.Core.Services.App
             Console.ForegroundColor = ConsoleColor.Red;
             Console.Write("    ###"); Console.ForegroundColor = generalColor; Console.Write("  ###");
             //Console.WriteLine("       Andy X 3.0.0-alpha. Copyright (C) 2022 Buildersoft LLC");
-            Console.WriteLine("       Andy X | SchemaHub 3.0.0. Developed with (love) by Buildersoft LLC.");
+            Console.WriteLine($"       {ApplicationProperties.ShortName} {ApplicationProperties.Version}. Developed with (love) by Buildersoft LLC.");
             Console.ForegroundColor = ConsoleColor.Red;
             Console.Write("      ####         "); Console.ForegroundColor = generalColor; Console.WriteLine("Licensed under the Apache License 2.0. See https://bit.ly/3DqVQbx");
             Console.ForegroundColor = ConsoleColor.Red;
@@ -29,15 +31,24 @@ namespace Andy.X.SchemaHub.Core.Services.App
             ExposePorts();
 
             Console.WriteLine("");
-            Console.WriteLine("                   Starting Andy X | SchemaHub...");
+            Console.WriteLine($"                   Starting {ApplicationProperties.ShortName}...");
             Console.WriteLine("\n");
-            logger.LogInformation("Starting Andy X | SchemaHub...");
+            logger.LogInformation($"Starting {ApplicationProperties.ShortName}...");
+            Console.WriteLine("");
+            logger.LogInformation($"Server environment:os.name: {GetOSName()}");
+            logger.LogInformation($"Server environment:os.platform: {Environment.OSVersion.Platform}");
+            logger.LogInformation($"Server environment:os.version: {Environment.OSVersion}");
+            logger.LogInformation($"Server environment:os.is64bit: {Environment.Is64BitOperatingSystem}");
+            logger.LogInformation($"Server environment:domain.user.name: {Environment.UserDomainName}");
+            logger.LogInformation($"Server environment:user.name: {Environment.UserName}");
+            logger.LogInformation($"Server environment:processor.count: {Environment.ProcessorCount}");
+            logger.LogInformation($"Server environment:dotnet.version: {Environment.Version}");
+            Console.WriteLine("");
+
             logger.LogInformation("Update settings");
+            logger.LogInformation($"Node identifier is '{nodeConfiguration.NodeId}'");
 
-            //if (Environment.GetEnvironmentVariable("ANDYX_EXPOSE_CONFIG_ENDPOINTS").ToLower() == "true")
-            //    logger.LogInformation("Configuration endpoints are exposed");
-
-            logger.LogInformation("Andy X SchemaHub is ready");
+            logger.LogInformation($"{ApplicationProperties.ShortName} is ready");
 
 
         }
@@ -78,6 +89,27 @@ namespace Andy.X.SchemaHub.Core.Services.App
 
             if (Directory.Exists(AppLocations.GetLogsDirectory()) != true)
                 Directory.CreateDirectory(AppLocations.GetLogsDirectory());
+        }
+
+        private static string GetOSName()
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return "Windows";
+            }
+            else if (RuntimeInformation.IsOSPlatform(osPlatform: OSPlatform.OSX))
+            {
+                return "MacOS";
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                return "Linux";
+            }
+            else
+            {
+                return "NOT_SUPPORTED";
+            }
+
         }
     }
 }
