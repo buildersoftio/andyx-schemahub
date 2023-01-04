@@ -27,7 +27,7 @@ namespace Andy.X.SchemaHub.App
             if (Environment.GetEnvironmentVariable("ANDYX_URLS") != null)
                 Environment.SetEnvironmentVariable("ASPNETCORE_URLS", Environment.GetEnvironmentVariable("ANDYX_URLS"));
             else
-                Environment.SetEnvironmentVariable("ASPNETCORE_URLS", "https://+:6541;http://+:6540");
+                Environment.SetEnvironmentVariable("ASPNETCORE_URLS", "https://+:6331;http://+:6330");
 
             try
             {

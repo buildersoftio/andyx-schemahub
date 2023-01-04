@@ -10,7 +10,7 @@ using System.Net.Mime;
 
 namespace Andy.X.SchemaHub.App.Controllers
 {
-    [Route("api/v1/tenants")]
+    [Route("api/v3/tenants")]
     [Produces(MediaTypeNames.Application.Json)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -29,7 +29,7 @@ namespace Andy.X.SchemaHub.App.Controllers
         [HttpGet("")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Authorize(Roles = "admin,readonly")]
+        //[Authorize(Roles = "admin,readonly")]
         public ActionResult<List<string>> GetTenants()
         {
             var tenants = _tenantService.GetTenants();
@@ -42,7 +42,7 @@ namespace Andy.X.SchemaHub.App.Controllers
         [HttpGet("{tenant}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Authorize(Roles = "admin,readonly")]
+        //[Authorize(Roles = "admin,readonly")]
         public ActionResult<Tenant> GetTenant(string tenant)
         {
             var tenants = _tenantService.GetTenant(tenant);
@@ -55,7 +55,7 @@ namespace Andy.X.SchemaHub.App.Controllers
         [HttpPost("{tenant}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Authorize(Roles = "admin")]
+        //[Authorize(Roles = "admin")]
         public ActionResult<string> PostTenant(string tenant)
         {
             var result = _tenantService.CreateTenant(tenant);
@@ -69,7 +69,7 @@ namespace Andy.X.SchemaHub.App.Controllers
         [HttpPut("tenant")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Authorize(Roles = "admin")]
+        //[Authorize(Roles = "admin")]
         public ActionResult<string> PutTenant(string tenant, [FromBody] TenantStatus tenantStatus)
         {
             var result = _tenantService.ChangeTenantStatus(tenant, tenantStatus);

@@ -12,7 +12,7 @@ using System.Net.Mime;
 
 namespace Andy.X.SchemaHub.App.Controllers
 {
-    [Route("api/v1/{tenant}/schemas")]
+    [Route("api/v3/{tenant}/schemas")]
     [Produces(MediaTypeNames.Application.Json)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -32,7 +32,7 @@ namespace Andy.X.SchemaHub.App.Controllers
         [HttpPost("{schema}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [Authorize(Roles = "admin")]
+        //[Authorize(Roles = "admin")]
         public ActionResult<string> PostSchemas(string tenant, string schema)
         {
             if (_schemaService.CreateSchema(tenant, schema))
@@ -52,7 +52,7 @@ namespace Andy.X.SchemaHub.App.Controllers
         [HttpGet("{schema}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Authorize(Roles = "admin,readonly")]
+        //[Authorize(Roles = "admin,readonly")]
         public ActionResult<List<Schema>> GetSchema(string tenant, string schema)
         {
             var schemas = _schemaService.GetSchema(tenant, schema);
@@ -65,7 +65,7 @@ namespace Andy.X.SchemaHub.App.Controllers
         [HttpPost("{schema}/definitions")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [Authorize(Roles = "admin")]
+        //[Authorize(Roles = "admin")]
         public ActionResult<string> PostSchemas(string tenant, string schema, [FromBody] SchemaDefinitionRequest schemaDefinitionDto)
         {
 
@@ -81,7 +81,7 @@ namespace Andy.X.SchemaHub.App.Controllers
         [HttpPut("{schema}/definitions")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [Authorize(Roles = "admin")]
+        //[Authorize(Roles = "admin")]
         public ActionResult<string> PutSchemas(string tenant, string schema, [FromBody] SchemaDefinitionRequest schemaDefinitionDto)
         {
             schemaDefinitionDto.Tenant = tenant;
@@ -96,7 +96,7 @@ namespace Andy.X.SchemaHub.App.Controllers
         [HttpGet("{schema}/definitions/{version}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Authorize(Roles = "admin,readonly")]
+        //[Authorize(Roles = "admin,readonly")]
         public ActionResult<SchemaDefinitionResponse> GetDefinition(string tenant, string schema, string version, [FromQuery] SchemaFileType schemaFileType)
         {
             var definition = _schemaService.GetSchemaDefinition(tenant, schema, version, schemaFileType);
@@ -110,7 +110,7 @@ namespace Andy.X.SchemaHub.App.Controllers
         [HttpGet("{schema}/definitions")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Authorize(Roles = "admin,readonly")]
+        //[Authorize(Roles = "admin,readonly")]
         public ActionResult<List<SchemaDefinitionResponse>> GetDefinitions(string tenant, string schema)
         {
             var definition = _schemaService.GetSchemaDefinitions(tenant, schema);
@@ -125,7 +125,7 @@ namespace Andy.X.SchemaHub.App.Controllers
         [HttpDelete("{schema}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [Authorize(Roles = "admin")]
+        //[Authorize(Roles = "admin")]
         public ActionResult<string> DeleteSchema(string tenant, string schema)
         {
             if (_schemaService.DeleteSchema(tenant, schema) != true)
@@ -137,7 +137,7 @@ namespace Andy.X.SchemaHub.App.Controllers
         [HttpPost("{schema}/definitions/{version}/deploy")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [Authorize(Roles = "admin")]
+        //[Authorize(Roles = "admin")]
         public ActionResult<string> DeploySchemaDefinition(string tenant, string schema, string version, [FromBody] DeploySchemaDefinitionRequest deploySchemaDefinitionRequest)
         {
 
