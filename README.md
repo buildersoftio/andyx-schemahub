@@ -1,3 +1,8 @@
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/10813728/202870468-20d05267-a8e6-4f93-a579-f249b8bd1268.png" alt="Sublime's custom image"/>
+</p>
+
+
 What is Andy X SchemaHub?
 ============
 
@@ -5,7 +10,7 @@ Andy X is an open-source distributed streaming platform designed to deliver the 
 
 ## Get Started
 
-Follow the [Getting Started](https://buildersoftdev.azurewebsites.net/andyx) instructions how to run Andy X.
+Follow the [Getting Started](https://buildersoftdev.github.io/andyx-docs/docs/get-started/introduction) instructions how to run Andy X.
 
 For local development and testing, you can run Andy X within a Docker container, for more info click [here](https://hub.docker.com/u/buildersoftdev)
 
